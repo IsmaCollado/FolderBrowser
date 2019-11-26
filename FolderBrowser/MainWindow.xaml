@@ -8,15 +8,23 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel VerticalAlignment="Top">
-            <local:UserControlBrowser x:Name="TrabajoUserControl"></local:UserControlBrowser>
-            <local:UserControlBrowser x:Name="TemporalUserControl"></local:UserControlBrowser>
-            <local:UserControlBrowser x:Name="LogUserControl"></local:UserControlBrowser>
+            <local:UserControlBrowser x:Name="TrabajoUserControl" Texto="Directorio de Trabajo" MuestraCarpetaNueva="True" IsReadOnly="True"></local:UserControlBrowser>
+            <local:UserControlBrowser x:Name="TemporalUserControl" Texto="Directorio temporal" MuestraCarpetaNueva="False" IsReadOnly="True"></local:UserControlBrowser>
+            <local:UserControlBrowser x:Name="LogUserControl" Texto="Directorio log" MuestraCarpetaNueva="False" IsReadOnly="True"></local:UserControlBrowser>
         </StackPanel>
-
         <StackPanel VerticalAlignment="Center">
-            <TextBlock Text="{Binding ElementName=TrabajoUserControl, Path=Content}"></TextBlock>
-            <TextBlock Text="{Binding ElementName=TemporalUserControl, Path=Content}"></TextBlock>
-            <TextBlock Text="{Binding ElementName=LogUserControl, Path=Content}"></TextBlock>
+            <TextBlock x:Name="TrabajoTextBlock">
+                <Run Text="Directorio de trabajo: "></Run>
+                <Run Text="{Binding ElementName=TrabajoUserControl, Path=Texto}"/>
+            </TextBlock>
+            <TextBlock x:Name="TemporalTextBlock">
+                <Run Text="Directorio temporal: "></Run>
+                <Run Text="{Binding ElementName=TemporalUserControl, Path=Texto}"/>
+            </TextBlock>
+            <TextBlock x:Name="LogTextBlock">
+                <Run Text="Directorio log: "></Run>
+                <Run Text="{Binding ElementName=LogUserControl, Path=Texto}"/>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Window>
